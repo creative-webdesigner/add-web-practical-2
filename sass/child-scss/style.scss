@@ -1,0 +1,263 @@
+header {
+  @include position-auto-lr;
+  @include transifion;
+  padding: 50px;
+  z-index: 9;
+
+  @media(max-width: 1200px){
+    padding: 30px;
+  }
+  @media(max-width: 991px){
+    padding: 15px;
+  }
+
+  .logo {
+    position: relative;
+    z-index: 999;
+
+    img {
+      @media(max-width: 670px) {
+        width: 102px;
+      }
+    }
+  }
+
+  .navbar {
+    .navbar-toggler {
+      @include reset-btn;
+      color: $white;
+      width: 40px;
+      height: auto;
+
+      span {
+        display: inline-block;
+        height: 5px;
+        width: 34px;
+        background-color: $white;
+        position: relative;
+        margin: 0;
+
+        &:nth-child(2) {
+          margin: 9px 0 0 9px;
+          float: left;
+        }
+      }
+    }
+    
+    &:after, &:before  {
+      content: '';
+      display: inline-block;
+      @include fixed-auto;
+      top: auto;
+      bottom: 110%;
+      transition: 1s ease-in-out;
+      background-color: $black-bg;
+      z-index: 8;
+    }
+
+    &:before {
+      z-index: 7;
+      transition: 0.5s ease-in-out;
+      background-color: $gray-bg;
+    }
+
+    &.mystyle {
+      .navbar-toggler {
+        z-index: 9999;
+        position: relative;
+      }
+
+      &:after, &:before {
+        top: 0;
+        bottom: 0;
+      }
+
+      .navbar-collapse {
+        transition: 0.8s ease-in-out;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+        opacity: 1;
+      }
+    }
+  }
+  .navbar-collapse {
+    @include fixed-auto;
+    
+    top: 110%;
+    bottom: auto;
+    display: flex !important;
+    opacity: 0;
+    z-index: -1;
+
+    &.show {
+    
+    }
+
+    .navbar-nav {
+      @include position-auto;
+      top: 170px;
+      @include transifion;
+      animation: fade_top 1s linear;
+      z-index: 100;
+
+      li {
+        padding: 0 50px;
+        margin: 10px 0;
+
+        @media (max-width: 1200px) {
+          padding: 0 30px;
+        }
+        @media (max-width: 991px) {
+          padding: 0 15px;
+        }
+
+        a {
+          font-family: $font-bold-italic;
+          font-size: 80px;
+          color: $white;
+          padding: 0;
+          line-height: normal;
+
+          @media (max-width: 1366px) {
+            font-size: 60px;
+          }
+    
+          @media (max-width: 1200px) {
+            font-size: 50px;
+          }
+    
+          @media (max-width: 991px) {
+            font-size: 40px;
+          }
+        }
+      }
+    }
+  }
+}
+.banner_section {
+  background-color: $black-bg;
+  position: relative;
+  z-index: 1;
+  height: $fullw;
+
+  .banner_img {
+    height: $full;
+    
+    img {
+      width: $width-100;
+      height: $full;
+      object-fit: cover;
+      object-position: center
+    }
+  }
+
+  .banner_slider {
+    @include position-auto;
+    @include flex-auto;
+    top: 50px;
+    padding: 50px;
+
+    @media(max-width: 1200px){
+      padding: 50px 30px;
+    }
+    @media(max-width: 991px){
+      padding: 50px 15px;
+    }
+
+    .banner_slide {
+      margin: auto;
+
+      h1 {
+        font-family: $font-black;
+        color: $white;
+        text-transform: $uppercase;
+        letter-spacing: 5.4px;
+        font-size: 90px;
+        padding: 50px 0px 50px 200px;
+        position: relative;
+        margin: 0;
+        z-index: 1;
+
+        @media(max-width: 1200px){
+          padding: 50px 0px 50px 100px;
+        }
+        @media(max-width: 991px){
+          padding: 30px;
+        }
+        @media(max-width: 767px){
+          padding: 15px 0 15px 15px;
+        }
+
+        br {
+          @media(max-width: 479px){
+            display: none;
+          }
+        }
+
+        &:after {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background-color: #000000;
+          opacity: 0.5;
+          z-index: -1;
+          clip-path: polygon(62% 0, 0 0, 0 300%);
+          
+          @media(max-width: 1200px){
+            clip-path: polygon(54% 0, 0 0, 0 300%);
+          }
+          @media(max-width: 991px){
+            clip-path: polygon(40% 0, 0 0, 0 300%);
+          }
+          @media(max-width: 479px){
+            clip-path: polygon(100% 0, -100% 0%, 100% 100%)
+          }
+        }
+
+        @media (max-width: 1366px) {
+          font-size: 60px;
+        }
+  
+        @media (max-width: 1200px) {
+          font-size: 50px;
+          letter-spacing: 2.4px;
+        }
+  
+        @media (max-width: 991px) {
+          font-size: 40px;
+        }
+      }
+    }
+
+    .slick-arrow {
+      position: absolute;
+      bottom: 40px;
+      right: 50px;
+      @include reset-btn;
+      color: $white;
+      font-size: 34px;
+
+      &.slick-prev {
+        right: 90px;
+
+        @media (max-width: 767px) {
+          right: auto;
+          left: calc(50% - 40px);
+        }
+      }
+
+      &.slick-next {
+        @media (max-width: 767px) {
+          left: auto;
+          right: calc(50% - 40px);
+        }
+      }
+    }
+  }
+}
